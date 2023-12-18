@@ -1,35 +1,35 @@
-    const value = document.getElementById('value')
-    const btns = document.querySelectorAll('.btn')
+const btns = document.querySelectorAll(".btn")
+const value = document.querySelector("#value")
+let count = 0
+btns.forEach((btn) =>{
+    
+    btn.addEventListener('click', (e)=> {
 
-    let count = 0
+        const styles = e.currentTarget.classList
 
-    btns.forEach(btn => {
+        if(styles.contains("increase")){
+            count++
+        } else if (styles.contains("decrease")){
+            count--
+        }else {
+            count = 0
+        }
+        if(count < 0) {
+            value.style.color = 'red'
+        }
+        else if(count > 0) {
+            value.style.color = 'green'
+        }
+        else {
+            value.style.color = 'black'
+        }
+        value.textContent = count
+    })
 
-        btn.addEventListener('click', (e)=> {
-            const styles = e.currentTarget.classList
+    
 
-            if(styles.contains('Increase')){
-                count += 1
-  
-            }else if(styles.contains('decrease')){
-                count -=1
-            
-            }else {
-                count = 0
-                
-            }
-            if(count < 0){
-                value.style.color = 'red'
-            }
-            else if(count > 0){
-                value.style.color = 'green'
-            }
-            else {
-                value.style.color = 'black'
-            }
-         
-            value.textContent = count
-        })
-        
-    });
+})
+
+
+
    
